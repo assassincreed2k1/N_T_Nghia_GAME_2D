@@ -47,7 +47,7 @@ SDL_Rect MainObject::GetRectFrame()
     SDL_Rect rect;
     rect.x = rect_.x;
     rect.y = rect_.y;
-    rect.w = rect_.w / width_frame_;
+    rect.w = width_frame_;
     rect.h = height_frame_;
     return rect;
 }

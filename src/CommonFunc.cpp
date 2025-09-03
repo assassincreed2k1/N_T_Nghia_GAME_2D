@@ -9,7 +9,7 @@ int map_start = 0;
 
 bool SDLCommonFunc::CheckCollision(const SDL_Rect &object1, const SDL_Rect &object2)
 {
-  // Tối ưu kiểm tra giao nhau trực tiếp
+  // Chuẩn AABB: kiểm tra giao vùng giữa hai hình chữ nhật
   int left_a = object1.x;
   int right_a = object1.x + object1.w;
   int top_a = object1.y;
