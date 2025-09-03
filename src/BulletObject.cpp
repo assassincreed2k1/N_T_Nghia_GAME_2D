@@ -12,9 +12,9 @@ BulletObject::~BulletObject()
 {
 }
 
-void BulletObject::HandleMove(const int &x_border, const int &y_border)
+void BulletObject::HandleMove(int x_border, int y_border)
 {
-    if (bullet_dir_ == DIR_RIGHT)
+    if (bullet_dir_ == static_cast<unsigned int>(BulletDir::DIR_RIGHT))
     {
         rect_.x += x_val_;
         if (rect_.x > x_border)
@@ -22,7 +22,7 @@ void BulletObject::HandleMove(const int &x_border, const int &y_border)
             is_move_ = false;
         }
     }
-    else if (bullet_dir_ == DIR_LEFT)
+    else if (bullet_dir_ == static_cast<unsigned int>(BulletDir::DIR_LEFT))
     {
         rect_.x -= x_val_;
         if (rect_.x < 0)

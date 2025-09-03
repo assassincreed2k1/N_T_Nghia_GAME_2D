@@ -12,8 +12,8 @@ public:
     ~PlayerPower();
 
     void SetNum(const int &num) { number_ = num; }
-    void AddPos(const int &xPos);
-    void Show(SDL_Renderer *screen);
+    void AddPos(int xPos);
+    void Show(SDL_Renderer *screen) const;
     void Init(SDL_Renderer *screen);
 
     void InitCrease();
@@ -31,7 +31,7 @@ public:
     ~PlayerMoney();
 
     void Init(SDL_Renderer *screen);
-    void Show(SDL_Renderer *screen);
+    void Show(SDL_Renderer *screen) const;
     void SetPos(const int &x, const int &y) { x_pos_ = x, y_pos_ = y; }
 
 private:

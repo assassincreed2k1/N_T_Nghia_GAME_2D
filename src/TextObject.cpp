@@ -82,3 +82,4 @@ void TextObject::RenderText(SDL_Renderer *screen,
 }
 
 
+

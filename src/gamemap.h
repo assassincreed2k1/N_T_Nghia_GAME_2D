@@ -6,7 +6,7 @@
 #include "BaseObject.h"
 
 #define MAX_TILES 20
-#define MAP_RUN 6
+#define MAP_RUN 7
 
 class TileMat : public BaseObject
 {
@@ -21,8 +21,8 @@ public:
     GameMap() { ; }
     ~GameMap() { ; }
 
-    void LoadMap(const char path[]);
-    void LoadMap_Return(const char path[]);
+    void LoadMap(const std::string& path);
+    void LoadMap_Return(const std::string& path);
     void LoadTiles(SDL_Renderer *screen);
     void DrawMap(SDL_Renderer *screen);
     Map getMap() const { return game_map_; };

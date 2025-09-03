@@ -187,12 +187,12 @@ void MainObject::HandelInputAction(SDL_Event events, SDL_Renderer *screen, Mix_C
 
             if (status_ == WALK_LEFT)
             {
-                p_bullet->set_bullet_dir(BulletObject::DIR_LEFT);
+                p_bullet->set_bullet_dir(static_cast<unsigned int>(BulletObject::BulletDir::DIR_LEFT));
                 p_bullet->SetRect(this->rect_.x - 20, rect_.y);
             }
             else if (status_ == WALK_RIGHT)
             {
-                p_bullet->set_bullet_dir(BulletObject::DIR_RIGHT);
+                p_bullet->set_bullet_dir(static_cast<unsigned int>(BulletObject::BulletDir::DIR_RIGHT));
                 p_bullet->SetRect(this->rect_.x + width_frame_ - 20, rect_.y);
             }
 

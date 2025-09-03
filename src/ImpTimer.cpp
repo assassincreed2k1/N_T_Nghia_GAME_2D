@@ -47,11 +47,11 @@ void ImpTimer::unpaused()
     }
 }
 
-int ImpTimer::get_ticks()
+int ImpTimer::get_ticks() const
 {
-    if (is_started_ == true)
+    if (is_started_)
     {
-        if (is_paused_ == true)
+        if (is_paused_)
         {
             return paused_tick_;
         }
@@ -60,16 +60,15 @@ int ImpTimer::get_ticks()
             return SDL_GetTicks() - start_tick_;
         }
     }
-
     return 0;
 }
 
-bool ImpTimer::is_started()
+bool ImpTimer::is_started() const
 {
     return is_started_;
 }
 
-bool ImpTimer::is_paused()
+bool ImpTimer::is_paused() const
 {
     return is_paused_;
 }

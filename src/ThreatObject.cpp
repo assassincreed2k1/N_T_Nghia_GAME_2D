@@ -25,7 +25,7 @@ ThreatsObject::~ThreatsObject()
 {
 }
 
-bool ThreatsObject::LoadImg(std::string path, SDL_Renderer *screen)
+bool ThreatsObject::LoadImg(const std::string& path, SDL_Renderer *screen)
 {
     bool ret = BaseObject::LoadImg(path, screen);
     if (ret)
@@ -330,7 +330,7 @@ void ThreatsObject::ImpMoveType(SDL_Renderer *screen)
     }
 }
 
-SDL_Rect ThreatsObject::GetRectFrame()
+SDL_Rect ThreatsObject::GetRectFrame() const
 {
     SDL_Rect rect;
     rect.x = rect_.x;

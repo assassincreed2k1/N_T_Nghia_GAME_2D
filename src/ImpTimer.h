@@ -12,10 +12,10 @@ public:
        void paused();
        void unpaused();
 
-       int get_ticks();
+       int get_ticks() const;
 
-       bool is_started();
-       bool is_paused();
+       bool is_started() const;
+       bool is_paused() const;
 
 private:
        int start_tick_;

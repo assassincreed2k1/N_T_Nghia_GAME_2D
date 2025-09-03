@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "PlayHealth.h"
 
@@ -9,11 +8,6 @@ PlayerPower::PlayerPower()
 
 PlayerPower::~PlayerPower()
 {
-}
-
-void PlayerPower::AddPos(const int &xp)
-{
-    pos_list_.push_back(xp);
 }
 
 void PlayerPower::Init(SDL_Renderer *screen)
@@ -30,13 +24,14 @@ void PlayerPower::Init(SDL_Renderer *screen)
     AddPos(100);
 }
 
-void PlayerPower::Show(SDL_Renderer *screen)
+void PlayerPower::Show(SDL_Renderer *screen) const
 {
-    for (int i = 0; i < pos_list_.size(); i++)
+    for (size_t i = 0; i < pos_list_.size(); ++i)
     {
-        rect_.x = pos_list_.at(i);
-        rect_.y = 0;
-        Render(screen);
+        SDL_Rect rect = rect_;
+        rect.x = pos_list_[i];
+        rect.y = 0;
+        SDL_RenderCopy(screen, p_object_, nullptr, &rect);
     }
 }
 
@@ -54,6 +49,10 @@ void PlayerPower::InitCrease()
     pos_list_.push_back(last_pos);
 }
 
+void PlayerPower::AddPos(int xPos) {
+    pos_list_.push_back(xPos);
+}
+
 PlayerMoney::PlayerMoney()
 {
     x_pos_ = 0;
@@ -69,9 +68,10 @@ void PlayerMoney::Init(SDL_Renderer *screen)
     bool ret = LoadImg("res/pic/img/heart_.png", screen);
 }
 
-void PlayerMoney::Show(SDL_Renderer *screen)
+void PlayerMoney::Show(SDL_Renderer *screen) const
 {
-    rect_.x = x_pos_;
-    rect_.y = y_pos_;
-    Render(screen);
+    SDL_Rect rect = rect_;
+    rect.x = x_pos_;
+    rect.y = y_pos_;
+    SDL_RenderCopy(screen, p_object_, nullptr, &rect);
 }

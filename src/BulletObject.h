@@ -9,22 +9,22 @@ class BulletObject : public BaseObject
 public:
        BulletObject();
        ~BulletObject();
-       enum BulletDir
+       enum class BulletDir : unsigned int
        {
               DIR_RIGHT = 20,
               DIR_LEFT = 21,
        };
 
-       void set_x_val(const int &xVal) { x_val_ = xVal; }
-       void set_y_val(const int &yVal) { y_val_ = yVal; }
+       void set_x_val(int xVal) { x_val_ = xVal; }
+       void set_y_val(int yVal) { y_val_ = yVal; }
        int get_x_val() const { return x_val_; }
        int get_y_val() const { return y_val_; }
 
-       void set_is_move(const bool &isMove) { is_move_ = isMove; }
+       void set_is_move(bool isMove) { is_move_ = isMove; }
        bool get_is_move() const { return is_move_; }
 
-       void set_bullet_dir(const unsigned int &bulletDir) { bullet_dir_ = bulletDir; }
-       void HandleMove(const int &x_boder, const int &y_boder);
+       void set_bullet_dir(unsigned int bulletDir) { bullet_dir_ = bulletDir; }
+       void HandleMove(int x_border, int y_border);
 
 private:
        int x_val_;
