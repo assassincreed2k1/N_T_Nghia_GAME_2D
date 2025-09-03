@@ -405,6 +405,7 @@ void MainObject::CheckToMap(Map &map_data, Mix_Chunk *gEarn_Heart)
             {
                 map_data.tile[y2][x1] = 0;
                 map_data.tile[y2][x2] = 0;
+                Mix_PlayChannel(-1, gEarn_Heart, 0);
                 IncreaseMoney();
             }
             else
@@ -427,6 +428,7 @@ void MainObject::CheckToMap(Map &map_data, Mix_Chunk *gEarn_Heart)
             {
                 map_data.tile[y1][x1] = 0;
                 map_data.tile[y1][x2] = 0;
+                Mix_PlayChannel(-1, gEarn_Heart, 0);
                 IncreaseMoney();
             }
             else
