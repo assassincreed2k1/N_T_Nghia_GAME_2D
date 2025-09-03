@@ -203,26 +203,39 @@ int main(int argc, char *argv[])
 
         is_minusLinve = p_player.GetIsMinusLive();
 
-        for (int i = 0; i < threats_list.size(); i++)
+        // Tối ưu: Chỉ xử lý threat nằm trong vùng nhìn thấy (viewport)
+        int viewport_left = map_data.start_x_ - 200;
+        int viewport_right = map_data.start_x_ + SCREEN_WIDTH + 200;
+        std::vector<int> to_remove;
+        for (int i = 0; i < threats_list.size(); ++i)
         {
-            ThreatsObject *p_threat = threats_list.at(i);
-            if (p_threat != NULL)
+            ThreatsObject *p_threat = threats_list[i];
+            if (p_threat != nullptr)
             {
-                p_threat->SetMapXY(map_data.start_x_, map_data.start_y_);
-                p_threat->ImpMoveType(g_screen);
-                p_threat->DoPlayer(map_data);
-                p_threat->Show(g_screen);
-
-                SDL_Rect rect_player = p_player.GetRectFrame();
-                SDL_Rect rect_threat = p_threat->GetRectFrame();
-                bCol2 = SDLCommonFunc::CheckCollision(rect_player, rect_threat);
-                if (bCol2 == true)
+                int threat_x = p_threat->get_x_pos();
+                if (threat_x + p_threat->get_width_frame() >= viewport_left && threat_x <= viewport_right)
                 {
-                    p_threat->Free();
-                    threats_list.erase(threats_list.begin() + i);
-                    break;
+                    p_threat->SetMapXY(map_data.start_x_, map_data.start_y_);
+                    p_threat->ImpMoveType(g_screen);
+                    p_threat->DoPlayer(map_data);
+                    p_threat->Show(g_screen);
+
+                    SDL_Rect rect_player = p_player.GetRectFrame();
+                    SDL_Rect rect_threat = p_threat->GetRectFrame();
+                    bCol2 = SDLCommonFunc::CheckCollision(rect_player, rect_threat);
+                    if (bCol2)
+                        to_remove.push_back(i);
                 }
             }
+        }
+        // Xóa threat sau khi duyệt xong để tránh lỗi khi xóa trong vòng lặp
+        for (int idx : to_remove)
+        {
+            if (threats_list[idx] != nullptr) threats_list[idx]->Free();
+        }
+        for (int i = to_remove.size() - 1; i >= 0; --i)
+        {
+            threats_list.erase(threats_list.begin() + to_remove[i]);
         }
 
         //              MONSTER
