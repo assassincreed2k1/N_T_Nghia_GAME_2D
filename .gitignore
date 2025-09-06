@@ -1,13 +1,13 @@
-# Ignore build output and binaries
+# Ignore all build output and binaries
 *.exe
 *.dll
 *.o
+*.obj
 *.a
 *.la
 *.so
 *.lib
 *.pdb
-*.obj
 *.out
 *.bin
 *.log
@@ -18,22 +18,17 @@
 *.tar
 *.gz
 
-# Ignore SDL2 and other external libraries
+# Ignore all library and header folders
 src/lib/
 src/include/
-SDL2_image.dll
-SDL2_mixer.dll
-SDL2_ttf.dll
-SDL2.dll
-libgcc_s_seh-1.dll
-libstdc++-6.dll
-libwinpthread-1.dll
+src/lib/**
+src/include/**
 
-# Ignore resource folders containing external assets
-res/font/
-res/Music/
-res/pic/
+# Ignore all resource folders and their contents
+res/
+res/**
 SDL_Make_Pic/
+SDL_Make_Pic/**
 
 # Ignore IDE and OS files
 .vscode/
@@ -47,7 +42,13 @@ Thumbs.db
 # Ignore Makefile backup
 Makefile~
 
-# Ignore all object and build files in src
+# Ignore all build folders
+build/
+dist/
+build/**
+dist/**
+
+# Ignore all object and build files in src and subfolders
 src/**/*.o
 src/**/*.obj
 src/**/*.exe
@@ -57,6 +58,9 @@ src/**/*.lib
 src/**/*.so
 src/**/*.out
 
-# Ignore all build folders
-build/
-dist/
+# Ignore all compressed and package files in any folder
+**/*.zip
+**/*.rar
+**/*.7z
+**/*.tar
+**/*.gz
