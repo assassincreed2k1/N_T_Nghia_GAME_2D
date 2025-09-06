@@ -24,12 +24,6 @@ src/include/
 src/lib/**
 src/include/**
 
-# Ignore all resource folders and their contents
-res/
-res/**
-SDL_Make_Pic/
-SDL_Make_Pic/**
-
 # Ignore IDE and OS files
 .vscode/
 *.sdf
