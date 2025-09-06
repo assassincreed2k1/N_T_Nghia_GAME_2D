@@ -1,0 +1,62 @@
+# Ignore build output and binaries
+*.exe
+*.dll
+*.o
+*.a
+*.la
+*.so
+*.lib
+*.pdb
+*.obj
+*.out
+*.bin
+*.log
+*.tmp
+*.rar
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Ignore SDL2 and other external libraries
+src/lib/
+src/include/
+SDL2_image.dll
+SDL2_mixer.dll
+SDL2_ttf.dll
+SDL2.dll
+libgcc_s_seh-1.dll
+libstdc++-6.dll
+libwinpthread-1.dll
+
+# Ignore resource folders containing external assets
+res/font/
+res/Music/
+res/pic/
+SDL_Make_Pic/
+
+# Ignore IDE and OS files
+.vscode/
+*.sdf
+*.suo
+*.user
+*.db
+*.DS_Store
+Thumbs.db
+
+# Ignore Makefile backup
+Makefile~
+
+# Ignore all object and build files in src
+src/**/*.o
+src/**/*.obj
+src/**/*.exe
+src/**/*.dll
+src/**/*.a
+src/**/*.lib
+src/**/*.so
+src/**/*.out
+
+# Ignore all build folders
+build/
+dist/
